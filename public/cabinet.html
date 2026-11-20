@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мій розклад — ЗнанняПлюс</title>
+  <meta name="description" content="Особистий кабінет учня: розклад занять, посилання на уроки, скасування та перенесення.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="js/utils.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/pages/cabinet.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="cabinet" data-section="">
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ЗнанняПлюс — на головну"><span class="logo__mark" aria-hidden="true">З+</span>ЗнанняПлюс</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span><span class="visually-hidden">Відкрити меню</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="catalog.html">Курси</a></li>
+          <li><a class="main-nav__link" href="tutors.html">Репетитори</a></li>
+          <li><a class="main-nav__link" href="index.html#how">Про центр</a></li>
+          <li><a class="main-nav__link" href="index.html#reviews">Відгуки</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ghost" href="cabinet.html">Мій кабінет</a>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="section section--tight section--surface">
+    <div class="container cabinet">
+        <aside class="card stack" aria-label="Меню кабінету">
+          <div class="side-menu__user"><span class="avatar" aria-hidden="true" data-me="initials">…</span><div><p class="t-medium" data-me="name">Учень</p><p class="t-caption t-muted" data-me="role">Особистий кабінет</p></div></div>
+          <nav aria-label="Розділи кабінету">
+            <ul class="side-menu__list">
+            <li><a class="side-menu__link" href="cabinet.html" aria-current="page">Розклад</a></li>
+            <li><a class="side-menu__link" href="settings.html">Налаштування</a></li>
+            <li><a class="side-menu__link" href="index.html" id="logout">Вийти</a></li>
+            </ul>
+          </nav>
+        </aside>
+      <div class="stack">
+        <h1>Мій розклад</h1>
+        <div class="row">
+          <div class="card"><p class="t-caption t-muted">Заплановано</p><p class="t-h3" id="stat-lessons">—</p></div>
+          <div class="card"><p class="t-caption t-muted">Баланс</p><p class="t-h3" id="balance">0 грн</p></div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Період" data-tabs>
+          <button type="button" role="tab" id="tab-upcoming" aria-selected="true" aria-controls="panel-upcoming">Найближчі</button>
+          <button type="button" role="tab" id="tab-past" aria-selected="false" aria-controls="panel-past" tabindex="-1">Минулі</button>
+        </div>
+        <div id="panel-upcoming" role="tabpanel" aria-labelledby="tab-upcoming" class="stack">
+          <p class="callout callout--info">Скасувати заняття можна не пізніше ніж за 12 год до початку.</p>
+          <ul class="stack" id="upcoming"></ul>
+        </div>
+        <div id="panel-past" role="tabpanel" aria-labelledby="tab-past" hidden>
+          <ul class="stack" id="past"></ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <dialog class="modal" id="cancel-modal" aria-labelledby="cancel-modal-title">
+    <div class="stack">
+      <div class="modal__head">
+        <h2 class="t-h2" id="cancel-modal-title">Скасувати заняття?</h2>
+        <button class="modal__close" type="button" data-modal-close aria-label="Закрити вікно">✕</button>
+      </div>
+      <p class="t-body-s t-muted" id="cancel-what">—</p>
+      <form class="stack" id="cancel-form" action="cabinet.html">
+        <fieldset class="stack" style="border: 0; margin: 0; padding: 0">
+          <legend class="t-body-s t-medium" style="margin-bottom: var(--space-2)">Куди повернути кошти (<span id="cancel-sum">—</span>)?</legend>
+          <label class="option"><input type="radio" name="refund" value="balance" checked><span class="option__text">На баланс у кабінеті<small>Миттєво, можна використати для іншого заняття</small></span></label>
+          <label class="option"><input type="radio" name="refund" value="card"><span class="option__text">На банківську картку<small>3–5 банківських днів, згідно з публічною офертою</small></span></label>
+        </fieldset>
+        <div class="row" style="justify-content: flex-end"><button class="btn btn--outline btn--lg" type="button" data-modal-close>Залишити</button><button class="btn btn--danger btn--lg" type="submit">Скасувати заняття</button></div>
+      </form>
+    </div>
+  </dialog>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about" aria-labelledby="f-about">
+          <h2 class="site-footer__brand" id="f-about">ЗнанняПлюс</h2>
+          <p>Освітній центр: підготовка до НМТ, англійська мова та програмування для школярів. Онлайн і офлайн.</p>
+        </section>
+        <nav aria-labelledby="f-learn">
+          <h2 class="site-footer__title" id="f-learn">Навчання</h2>
+          <ul class="site-footer__list">
+            <li><a href="catalog.html?subject=math">Курси НМТ</a></li>
+            <li><a href="catalog.html?subject=english">Англійська</a></li>
+            <li><a href="catalog.html?subject=prog">Програмування</a></li>
+            <li><a href="tutors.html">Репетитори</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-center">
+          <h2 class="site-footer__title" id="f-center">Центр</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html#how">Про нас</a></li>
+            <li><a href="index.html#reviews">Відгуки</a></li>
+            <li><a href="index.html">Публічна оферта</a></li>
+            <li><a href="index.html">Політика конфіденційності</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="f-contacts">
+          <h2 class="site-footer__title" id="f-contacts">Контакти</h2>
+          <address class="site-footer__list">
+            <a href="tel:+380441234567">+380 44 123 45 67</a>
+            <a href="mailto:hello@znannyaplus.com.ua">hello@znannyaplus.com.ua</a>
+            <span>Київ, вул. Хрещатик, 1</span>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ЗнанняПлюс. Усі права захищено.</p>
+    </div>
+  </footer>
+</body>
+</html>

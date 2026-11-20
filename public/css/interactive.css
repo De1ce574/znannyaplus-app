@@ -1,0 +1,347 @@
+/* ==========================================================================
+   interactive.css — стани елементів, якими керує JavaScript (ЛР № 4):
+   повідомлення валідації, toast, модальні вікна, акордеон, вкладки,
+   кнопка «Нагору», підсвічування оновлених елементів
+   ========================================================================== */
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-padding-top: 84px; /* якорі не ховаються під «липкою» шапкою */
+}
+
+/* ---- Шапка під час прокручування ---- */
+.site-header {
+  transition: box-shadow 0.2s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+}
+
+/* ---- Валідація форм ---- */
+.field__error {
+  margin: 0;
+  color: var(--color-danger-text);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  font-weight: 500;
+}
+
+.field__error::before {
+  content: "⚠ ";
+}
+
+.field--error .field__input,
+.field--error .select {
+  border-color: var(--color-danger);
+  background: var(--color-danger-soft);
+}
+
+.field--error .check {
+  color: var(--color-danger-text);
+}
+
+.form-alert {
+  margin: 0;
+}
+
+.field__row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.field__row .field__input {
+  flex: 1;
+}
+
+textarea.field__input {
+  min-height: 88px;
+  resize: vertical;
+}
+
+/* ---- Toast-повідомлення ---- */
+.toast-region {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(420px, calc(100vw - 2 * var(--space-4)));
+}
+
+.toast {
+  box-shadow: var(--shadow-modal);
+  animation: toast-in 0.25s ease;
+}
+
+.toast__text {
+  flex: 1;
+}
+
+.toast__close {
+  padding: 0 var(--space-1);
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: var(--fs-h3);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.toast.is-leaving {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Модальне вікно (<dialog>) ---- */
+.modal {
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 28px;
+  border: 0;
+  border-radius: var(--radius-4);
+  background: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow-modal);
+}
+
+.modal::backdrop {
+  background: rgb(28 32 36 / 45%);
+}
+
+.modal[open] {
+  animation: toast-in 0.2s ease;
+}
+
+.modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.modal__close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: var(--radius-2);
+  background: none;
+  color: var(--color-text-muted);
+  font-size: var(--fs-h3);
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  background: var(--color-surface-2);
+}
+
+/* ---- Акордеон програми курсу ---- */
+.accordion__item {
+  display: block;
+  padding: 0;
+}
+
+.accordion__button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  padding: 14px var(--space-4);
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion__button:hover {
+  background: var(--color-surface);
+}
+
+.accordion__title {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.accordion__icon {
+  color: var(--color-accent-text);
+  font-size: var(--fs-h3);
+  transition: transform 0.2s ease;
+}
+
+.accordion__button[aria-expanded="true"] .accordion__icon {
+  transform: rotate(45deg);
+}
+
+.accordion__panel {
+  margin: 0;
+  padding: 0 var(--space-4) var(--space-4) 64px;
+  color: var(--color-text-muted);
+}
+
+/* ---- Вкладки ---- */
+.tabs [role="tab"] {
+  margin-bottom: -1px;
+  padding: var(--space-2) var(--space-1);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--color-text-muted);
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tabs [role="tab"][aria-selected="true"] {
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+/* ---- Кнопки-слоти в розкладі репетитора ---- */
+button.week__slot {
+  width: 100%;
+  font: inherit;
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.week__slot:hover {
+  background: var(--color-accent-hover);
+}
+
+.week__slot--free {
+  background: var(--color-bg);
+}
+
+.week__slot--cancelled {
+  border-color: var(--color-danger);
+  background: var(--color-danger-soft);
+  color: var(--color-danger-text);
+}
+
+/* ---- Підсвічування щойно зміненого елемента ---- */
+.is-updated {
+  animation: flash 1.6s ease;
+}
+
+@keyframes flash {
+  0%,
+  40% {
+    box-shadow: 0 0 0 3px var(--color-success);
+  }
+
+  100% {
+    box-shadow: none;
+  }
+}
+
+/* ---- Кнопка «Нагору» ---- */
+.scroll-top {
+  position: fixed;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 150;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: var(--fs-h3);
+  box-shadow: var(--shadow-hover);
+  cursor: pointer;
+}
+
+.scroll-top:hover {
+  background: var(--color-accent-hover);
+}
+
+/* ---- Різне ---- */
+.btn[aria-disabled="true"] {
+  pointer-events: none;
+}
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-accent-text);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+.consultation-done {
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Стани завантаження даних з API (ЛР № 5) ---- */
+.load-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-7) var(--space-5);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-3);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.load-state--error {
+  border-color: var(--color-danger);
+  background: var(--color-danger-soft);
+  color: var(--color-danger-text);
+}
+
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+.table td .btn {
+  min-height: 32px;
+  padding: 4px 10px;
+}
+
+/* ---------- ЛР5: стабільний макет під час завантаження даних з API (CLS) ---------- */
+main#main { min-height: calc(100vh - 64px); } /* підвал не «стрибає», поки дані завантажуються */
+#groups-title { height: min(560px, 70vh); overflow: auto; } /* таблиця груп адмінки — фіксованої висоти з прокруткою */
+#groups-title thead th { position: sticky; top: 0; background: var(--color-surface, #fff); z-index: 1; }
+#upcoming { min-height: 220px; }

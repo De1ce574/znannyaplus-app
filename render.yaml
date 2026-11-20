@@ -1,0 +1,23 @@
+# Розгортання на Render (https://render.com) через Blueprint
+services:
+  - type: web
+    name: znannyaplus
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: TZ
+        value: Europe/Kyiv
+      - key: DB_PATH
+        value: data/znannyaplus.db
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false # значення вводиться вручну під час створення сервісу

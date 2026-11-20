@@ -1,0 +1,109 @@
+/* ==========================================================================
+   tokens.css — дизайн-токени «ЗнанняПлюс» (відповідають Figma Variables
+   колекції «ЗнанняПлюс / Tokens», ЛР № 2; основа — Radix Themes / Radix Colors)
+   ========================================================================== */
+
+:root {
+  /* ---- Кольори: акцент (Radix Indigo) ---- */
+  --color-accent: #3e63dd;          /* Indigo 9  */
+  --color-accent-hover: #3358d4;    /* Indigo 10 */
+  --color-accent-soft: #edf2fe;     /* Indigo 3  */
+  --color-accent-soft-2: #e1e9ff;   /* Indigo 4  */
+  --color-accent-text: #3a5bc7;     /* Indigo 11 */
+  --color-on-accent: #ffffff;
+
+  /* ---- Нейтральні (Radix Slate) ---- */
+  --color-bg: #ffffff;
+  --color-surface: #f9f9fb;         /* Slate 2  */
+  --color-surface-2: #f0f0f3;       /* Slate 3  */
+  --color-border: #d9d9e0;          /* Slate 6  */
+  --color-text: #1c2024;            /* Slate 12 */
+  --color-text-muted: #60646c;      /* Slate 11 — контраст 6,0:1 (WCAG AA) */
+
+  /* ---- Статуси ---- */
+  --color-success: #30a46c;
+  --color-success-soft: #e6f6eb;
+  --color-success-text: #18794e; /* ЛР5: затемнено до контрасту 4,8:1 (WCAG AA) */
+  --color-warning: #ffc53d;
+  --color-warning-soft: #fff7c2;
+  --color-warning-text: #8f4e00; /* ЛР5: контраст 5,9:1 */
+  --color-danger: #e5484d;
+  --color-danger-soft: #feebec;
+  --color-danger-text: #ce2c31;
+
+  /* ---- Підвал ---- */
+  --color-footer: #1c2024;
+  --color-on-footer: #edeef0;
+  --color-on-footer-muted: #b0b4ba;
+
+  /* ---- Відступи (space-1 … space-9) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  /* ---- Радіуси ---- */
+  --radius-1: 4px;   /* бейджі, чекбокси */
+  --radius-2: 6px;   /* кнопки, поля     */
+  --radius-3: 8px;   /* картки           */
+  --radius-4: 12px;  /* модальні вікна   */
+  --radius-full: 999px;
+
+  /* ---- Типографіка (шрифт Inter) ---- */
+  --font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --fs-display: 3rem;      /* 48 / 56 */
+  --lh-display: 3.5rem;
+  --fs-h1: 2.1875rem;      /* 35 / 40 */
+  --lh-h1: 2.5rem;
+  --fs-h2: 1.75rem;        /* 28 / 36 */
+  --lh-h2: 2.25rem;
+  --fs-h3: 1.25rem;        /* 20 / 28 */
+  --lh-h3: 1.75rem;
+  --fs-body-l: 1.125rem;   /* 18 / 26 */
+  --lh-body-l: 1.625rem;
+  --fs-body: 1rem;         /* 16 / 24 */
+  --lh-body: 1.5rem;
+  --fs-body-s: 0.875rem;   /* 14 / 20 */
+  --lh-body-s: 1.25rem;
+  --fs-caption: 0.75rem;   /* 12 / 16 */
+  --lh-caption: 1rem;
+
+  /* ---- Ефекти ---- */
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 8%);
+  --shadow-hover: 0 8px 24px rgb(26 38 102 / 14%);
+  --shadow-modal: 0 12px 32px rgb(0 0 0 / 18%);
+  --focus-ring: 0 0 0 3px rgb(62 99 221 / 35%);
+
+  /* ---- Сітка ---- */
+  --container: 1200px;
+  --gutter: var(--space-5);
+  --page-padding: 120px;
+}
+
+/* Планшет: 8 колонок, поля 32 px */
+@media (max-width: 1023px) {
+  :root {
+    --page-padding: 32px;
+    --gutter: var(--space-4);
+    --fs-display: 2.5rem;
+    --lh-display: 3rem;
+  }
+}
+
+/* Мобільний: 4 колонки, поля 16 px; стилі Mobile/Display, Mobile/H1 */
+@media (max-width: 767px) {
+  :root {
+    --page-padding: 16px;
+    --fs-display: 2rem;      /* 32 / 40 */
+    --lh-display: 2.5rem;
+    --fs-h1: 1.625rem;       /* 26 / 32 */
+    --lh-h1: 2rem;
+    --fs-h2: 1.375rem;
+    --lh-h2: 1.75rem;
+  }
+}

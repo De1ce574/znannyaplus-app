@@ -1,0 +1,20 @@
+{
+  "name": "znannyaplus-app",
+  "version": "1.0.0",
+  "description": "Вебзастосунок освітнього центру «ЗнанняПлюс»: клієнт (HTML/CSS/JS), сервер Node.js + Express, база даних SQLite, REST API",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --watch --env-file-if-exists=.env server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "license": "MIT",
+  "author": "Вискірко Олександр, ФІТ 2-17"
+}

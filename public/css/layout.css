@@ -1,0 +1,348 @@
+/* ==========================================================================
+   layout.css — контейнер, шапка, підвал, сітки сторінок (Flexbox + Grid)
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--page-padding));
+  margin-inline: auto;
+  padding-inline: var(--page-padding);
+}
+
+.section {
+  padding-block: var(--space-9);
+}
+
+.section--tight {
+  padding-block: var(--space-6) var(--space-9);
+}
+
+.section--surface {
+  background: var(--color-surface);
+}
+
+.section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.page-title {
+  margin-block: var(--space-4) var(--space-5);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.stack--lg {
+  gap: var(--space-6);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------------- Шапка (Header) ---------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  min-height: 68px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  font-weight: 600;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-3);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: var(--fs-body-s);
+  font-weight: 600;
+}
+
+.main-nav__list {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.main-nav__link {
+  color: var(--color-text);
+  white-space: nowrap;
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+}
+
+.main-nav__link[aria-current="page"] {
+  color: var(--color-accent-text);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Бургер-меню: кнопка керується JavaScript (клас .is-open на шапці) */
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    min-height: 60px;
+    gap: var(--space-3);
+  }
+
+  .menu-button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2);
+    background: var(--color-bg);
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+
+  .main-nav,
+  .site-header__actions {
+    display: none;
+    width: 100%;
+  }
+
+  .site-header.is-open .main-nav,
+  .site-header.is-open .site-header__actions {
+    display: flex;
+  }
+
+  .main-nav__list {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .main-nav__link {
+    display: block;
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-surface-2);
+  }
+
+  .site-header__actions {
+    padding-bottom: var(--space-3);
+  }
+
+  .site-header__actions .btn {
+    flex: 1;
+  }
+}
+
+/* ---------------- Підвал (Footer) ---------------- */
+.site-footer {
+  padding-block: var(--space-8);
+  background: var(--color-footer);
+  color: var(--color-on-footer-muted);
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body-s);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--space-6) var(--space-8);
+}
+
+.site-footer__title {
+  margin-bottom: var(--space-3);
+  color: var(--color-on-footer);
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+}
+
+.site-footer__brand {
+  margin-bottom: var(--space-3);
+  color: var(--color-on-footer);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  font-weight: 600;
+}
+
+.site-footer__list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.site-footer a,
+.site-footer address {
+  color: var(--color-on-footer-muted);
+  font-style: normal;
+}
+
+.site-footer__copy {
+  margin-top: var(--space-6);
+  font-size: var(--fs-caption);
+}
+
+@media (max-width: 1023px) {
+  .main-nav__list {
+    gap: var(--space-4);
+  }
+
+  .site-footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .site-footer__about {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------------- Хлібні крихти ---------------- */
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--fs-body-s);
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs__item + .breadcrumbs__item::before {
+  content: "/";
+  margin-right: var(--space-2);
+}
+
+.breadcrumbs a {
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: var(--color-text);
+}
+
+/* ---------------- Сітки ---------------- */
+
+/* Сітка карток: 4 / 3 / 2 / 1 колонки залежно від ширини */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--gutter);
+}
+
+.card-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1023px) {
+  .card-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .card-grid,
+  .card-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Основний вміст + бічна колонка праворуч (курс, запис, оплата) */
+.layout-aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 384px;
+  gap: var(--gutter);
+  align-items: start;
+}
+
+/* Бічна колонка ліворуч (каталог, профіль) */
+.layout-sidebar {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.layout-sidebar--wide {
+  grid-template-columns: 384px minmax(0, 1fr);
+}
+
+/* Кабінет: меню 256 px + вміст */
+.cabinet {
+  display: grid;
+  grid-template-columns: 256px minmax(0, 1fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.sticky {
+  position: sticky;
+  top: 92px;
+}
+
+@media (max-width: 1023px) {
+  .layout-aside,
+  .layout-sidebar--wide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .layout-sidebar {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
+  .cabinet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sticky {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .layout-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .section {
+    padding-block: var(--space-7);
+  }
+}

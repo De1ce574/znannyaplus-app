@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Репетитори — ЗнанняПлюс</title>
+  <meta name="description" content="Репетитори центру ЗнанняПлюс: освіта, досвід, рейтинг і відгуки учнів.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="js/utils.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/pages/tutors.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="tutors" data-section="tutors.html">
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ЗнанняПлюс — на головну"><span class="logo__mark" aria-hidden="true">З+</span>ЗнанняПлюс</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span><span class="visually-hidden">Відкрити меню</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="catalog.html">Курси</a></li>
+          <li><a class="main-nav__link" href="tutors.html">Репетитори</a></li>
+          <li><a class="main-nav__link" href="index.html#how">Про центр</a></li>
+          <li><a class="main-nav__link" href="index.html#reviews">Відгуки</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions" data-guest>
+        <a class="btn btn--ghost" href="login.html">Увійти</a>
+        <a class="btn btn--solid" href="login.html#register">Реєстрація</a>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="section section--tight">
+    <div class="container stack">
+      <nav class="breadcrumbs" aria-label="Хлібні крихти">
+        <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item"><a href="index.html">Головна</a></li>
+        <li class="breadcrumbs__item" aria-current="page">Репетитори</li>
+        </ol>
+      </nav>
+      <h1>Репетитори</h1>
+      <p class="t-body-l t-muted">35 викладачів з підтвердженою освітою. Рейтинг формується лише з відгуків учнів, які відвідали заняття.</p>
+      <form class="stack" id="tutor-filter" action="tutors.html" aria-label="Фільтр репетиторів">
+        <div class="field" style="max-width: 360px"><label class="field__label" for="tutor-search">Пошук за ім'ям</label><input class="field__input" id="tutor-search" name="name" type="search" placeholder="Наприклад, Коваль"></div>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="subj" value="all" checked>Усі</label>
+          <label class="chip"><input type="radio" name="subj" value="math">Математика</label>
+          <label class="chip"><input type="radio" name="subj" value="english">Англійська</label>
+          <label class="chip"><input type="radio" name="subj" value="prog">Програмування</label>
+          <label class="chip"><input type="radio" name="subj" value="ukr">Українська мова</label>
+          <label class="chip"><input type="radio" name="subj" value="history">Історія</label>
+        </div>
+      </form>
+      <h2 class="t-body-s t-muted" id="tutor-count" aria-live="polite">Показано 8 репетиторів</h2>
+      <div class="card-grid">
+          <article class="tutor-card" data-subject="math" data-name="Олена Коваль">
+            <span class="avatar avatar--l" aria-hidden="true">ОК</span>
+            <h3>Олена Коваль</h3>
+            <p class="t-body-s t-muted">Математика, алгебра</p>
+            <p class="rating">★ 4,9 · 32 відгуки</p>
+            <p class="t-caption t-muted">Стаж 8 років · від 450 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="english" data-name="Андрій Мельник">
+            <span class="avatar avatar--l" aria-hidden="true">АМ</span>
+            <h3>Андрій Мельник</h3>
+            <p class="t-body-s t-muted">Англійська мова</p>
+            <p class="rating">★ 4,8 · 27 відгуків</p>
+            <p class="t-caption t-muted">Стаж 6 років · від 400 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="prog" data-name="Ігор Савчук">
+            <span class="avatar avatar--l" aria-hidden="true">ІС</span>
+            <h3>Ігор Савчук</h3>
+            <p class="t-body-s t-muted">Python, веброзробка</p>
+            <p class="rating">★ 4,9 · 18 відгуків</p>
+            <p class="t-caption t-muted">Стаж 5 років · від 420 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="history" data-name="Софія Литвин">
+            <span class="avatar avatar--l" aria-hidden="true">СЛ</span>
+            <h3>Софія Литвин</h3>
+            <p class="t-body-s t-muted">Історія України</p>
+            <span class="badge badge--indigo">Новий репетитор</span>
+            <p class="t-caption t-muted">Стаж 2 роки · від 350 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="ukr" data-name="Наталія Бойко">
+            <span class="avatar avatar--l" aria-hidden="true">НБ</span>
+            <h3>Наталія Бойко</h3>
+            <p class="t-body-s t-muted">Українська мова та література</p>
+            <p class="rating">★ 5,0 · 41 відгук</p>
+            <p class="t-caption t-muted">Стаж 12 років · від 480 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="english" data-name="Ірина Ткач">
+            <span class="avatar avatar--l" aria-hidden="true">ІТ</span>
+            <h3>Ірина Ткач</h3>
+            <p class="t-body-s t-muted">Англійська для дорослих</p>
+            <p class="rating">★ 4,7 · 22 відгуки</p>
+            <p class="t-caption t-muted">Стаж 9 років · від 450 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="math" data-name="Максим Гнатюк">
+            <span class="avatar avatar--l" aria-hidden="true">МГ</span>
+            <h3>Максим Гнатюк</h3>
+            <p class="t-body-s t-muted">Математика, фізика</p>
+            <p class="rating">★ 4,8 · 15 відгуків</p>
+            <p class="t-caption t-muted">Стаж 4 роки · від 400 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="prog" data-name="Дарина Кравець">
+            <span class="avatar avatar--l" aria-hidden="true">ДК</span>
+            <h3>Дарина Кравець</h3>
+            <p class="t-body-s t-muted">Програмування для дітей (Scratch)</p>
+            <span class="badge badge--indigo">Новий репетитор</span>
+            <p class="t-caption t-muted">Стаж 1 рік · від 300 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+      </div>
+      <p class="empty-state" id="tutor-empty" hidden>За цими умовами репетиторів не знайдено.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about" aria-labelledby="f-about">
+          <h2 class="site-footer__brand" id="f-about">ЗнанняПлюс</h2>
+          <p>Освітній центр: підготовка до НМТ, англійська мова та програмування для школярів. Онлайн і офлайн.</p>
+        </section>
+        <nav aria-labelledby="f-learn">
+          <h2 class="site-footer__title" id="f-learn">Навчання</h2>
+          <ul class="site-footer__list">
+            <li><a href="catalog.html?subject=math">Курси НМТ</a></li>
+            <li><a href="catalog.html?subject=english">Англійська</a></li>
+            <li><a href="catalog.html?subject=prog">Програмування</a></li>
+            <li><a href="tutors.html">Репетитори</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-center">
+          <h2 class="site-footer__title" id="f-center">Центр</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html#how">Про нас</a></li>
+            <li><a href="index.html#reviews">Відгуки</a></li>
+            <li><a href="index.html">Публічна оферта</a></li>
+            <li><a href="index.html">Політика конфіденційності</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="f-contacts">
+          <h2 class="site-footer__title" id="f-contacts">Контакти</h2>
+          <address class="site-footer__list">
+            <a href="tel:+380441234567">+380 44 123 45 67</a>
+            <a href="mailto:hello@znannyaplus.com.ua">hello@znannyaplus.com.ua</a>
+            <span>Київ, вул. Хрещатик, 1</span>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ЗнанняПлюс. Усі права захищено.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Курси НМТ, англійська та програмування — ЗнанняПлюс</title>
+  <meta name="description" content="Освітній центр ЗнанняПлюс: підготовка до НМТ, англійська мова та програмування для школярів онлайн і офлайн.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="js/utils.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/pages/index.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="index" data-section="">
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ЗнанняПлюс — на головну"><span class="logo__mark" aria-hidden="true">З+</span>ЗнанняПлюс</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span><span class="visually-hidden">Відкрити меню</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="catalog.html">Курси</a></li>
+          <li><a class="main-nav__link" href="tutors.html">Репетитори</a></li>
+          <li><a class="main-nav__link" href="index.html#how">Про центр</a></li>
+          <li><a class="main-nav__link" href="index.html#reviews">Відгуки</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions" data-guest>
+        <a class="btn btn--ghost" href="login.html">Увійти</a>
+        <a class="btn btn--solid" href="login.html#register">Реєстрація</a>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="badge badge--green">Набір на 2026/27 навчальний рік відкрито</span>
+          <h1 class="t-display" id="hero-title">Підготовка до НМТ, англійська та програмування</h1>
+          <p class="t-body-l t-muted">Індивідуальні заняття з репетиторами та групові курси — онлайн і в центрі. Оберіть курс і запишіться за кілька кліків.</p>
+          <form class="search" action="catalog.html" role="search">
+            <label class="visually-hidden" for="q">Пошук</label>
+            <input class="field__input" id="q" name="q" type="search" placeholder="Пошук курсу, предмета або репетитора">
+            <button class="btn btn--solid btn--lg" type="submit">Знайти</button>
+          </form>
+          <div class="row">
+            <a class="btn btn--solid btn--lg" href="catalog.html">Обрати курс</a>
+            <a class="btn btn--outline btn--lg" href="#consultation">Безкоштовна консультація</a>
+          </div>
+          <dl class="stats">
+            <div><dt class="visually-hidden">Учнів</dt><dd class="stats__value" data-count="1200" data-suffix="+">1 200+</dd><dd class="t-body-s t-muted">учнів за 4 роки</dd></div>
+            <div><dt class="visually-hidden">Репетиторів</dt><dd class="stats__value" data-count="35">35</dd><dd class="t-body-s t-muted">репетиторів</dd></div>
+            <div><dt class="visually-hidden">Оцінка</dt><dd class="stats__value" data-count="4.9" data-suffix=" ★">4,9 ★</dd><dd class="t-body-s t-muted">середня оцінка</dd></div>
+          </dl>
+        </div>
+        <div class="placeholder hero__image" role="img" aria-label="Фото: заняття в центрі">Фото: заняття в центрі</div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="popular-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="popular-title">Популярні курси</h2>
+          <a class="btn btn--ghost" href="catalog.html?sort=popular">Усі курси →</a>
+        </div>
+        <div class="card-grid" id="popular-list">
+          <p class="t-muted">Завантаження курсів…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="tutors-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="tutors-title">Наші репетитори</h2>
+          <a class="btn btn--ghost" href="tutors.html">Усі репетитори →</a>
+        </div>
+        <div class="card-grid">
+          <article class="tutor-card" data-subject="math" data-name="Олена Коваль">
+            <span class="avatar avatar--l" aria-hidden="true">ОК</span>
+            <h3>Олена Коваль</h3>
+            <p class="t-body-s t-muted">Математика, алгебра</p>
+            <p class="rating">★ 4,9 · 32 відгуки</p>
+            <p class="t-caption t-muted">Стаж 8 років · від 450 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="english" data-name="Андрій Мельник">
+            <span class="avatar avatar--l" aria-hidden="true">АМ</span>
+            <h3>Андрій Мельник</h3>
+            <p class="t-body-s t-muted">Англійська мова</p>
+            <p class="rating">★ 4,8 · 27 відгуків</p>
+            <p class="t-caption t-muted">Стаж 6 років · від 400 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="prog" data-name="Ігор Савчук">
+            <span class="avatar avatar--l" aria-hidden="true">ІС</span>
+            <h3>Ігор Савчук</h3>
+            <p class="t-body-s t-muted">Python, веброзробка</p>
+            <p class="rating">★ 4,9 · 18 відгуків</p>
+            <p class="t-caption t-muted">Стаж 5 років · від 420 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+          <article class="tutor-card" data-subject="history" data-name="Софія Литвин">
+            <span class="avatar avatar--l" aria-hidden="true">СЛ</span>
+            <h3>Софія Литвин</h3>
+            <p class="t-body-s t-muted">Історія України</p>
+            <span class="badge badge--indigo">Новий репетитор</span>
+            <p class="t-caption t-muted">Стаж 2 роки · від 350 грн</p>
+            <a class="btn btn--outline" href="tutor.html">Переглянути профіль</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title" class="page-title">Як це працює</h2>
+        <ol class="steps">
+          <li class="card stack"><span class="step__num" aria-hidden="true">1</span><h3>Оберіть курс або репетитора</h3><p class="t-body-s t-muted">Фільтри за предметом, форматом, ціною та віком.</p></li>
+          <li class="card stack"><span class="step__num" aria-hidden="true">2</span><h3>Запишіться та оплатіть онлайн</h3><p class="t-body-s t-muted">Вільні місця і слоти видно одразу. Оплата карткою, Apple Pay або Google Pay.</p></li>
+          <li class="card stack"><span class="step__num" aria-hidden="true">3</span><h3>Навчайтеся й отримуйте нагадування</h3><p class="t-body-s t-muted">Розклад і посилання на уроки — в особистому кабінеті та Telegram.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <h2 id="reviews-title" class="page-title">Відгуки учнів і батьків</h2>
+        <div class="card-grid card-grid--3">
+          <article class="review-card">
+            <div class="review-card__author">
+              <span class="avatar avatar--s" aria-hidden="true">МС</span>
+              <div>
+                <h3 class="t-body-s t-medium">Марія С.</h3>
+                <p class="t-caption t-muted">мама учня 11 класу · жовтень 2026</p>
+              </div>
+            </div>
+            <p class="rating"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Оцінка 5 з 5</span></p>
+            <blockquote><p>Олена Вікторівна пояснює складні теми просто. За три місяці син підняв пробний НМТ зі 140 до 172 балів.</p></blockquote>
+            <span class="badge badge--green">Відвідав(ла) заняття</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card__author">
+              <span class="avatar avatar--s" aria-hidden="true">ДК</span>
+              <div>
+                <h3 class="t-body-s t-medium">Денис К.</h3>
+                <p class="t-caption t-muted">учень 10 класу · вересень 2026</p>
+              </div>
+            </div>
+            <p class="rating"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Оцінка 5 з 5</span></p>
+            <blockquote><p>Зручно, що розклад і посилання на урок у кабінеті, а нагадування приходять у Telegram.</p></blockquote>
+            <span class="badge badge--green">Відвідав(ла) заняття</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card__author">
+              <span class="avatar avatar--s" aria-hidden="true">ОЛ</span>
+              <div>
+                <h3 class="t-body-s t-medium">Оксана Л.</h3>
+                <p class="t-caption t-muted">слухачка курсу англійської · серпень 2026</p>
+              </div>
+            </div>
+            <p class="rating"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Оцінка 5 з 5</span></p>
+            <blockquote><p>Вечірня група онлайн — те, що треба після роботи. За пів року вільно говорю на співбесідах.</p></blockquote>
+            <span class="badge badge--green">Відвідав(ла) заняття</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="consultation" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-band">
+          <div class="stack">
+            <h2 id="cta-title">Не знаєте, з чого почати?</h2>
+            <p class="t-body-l">Залиште контакти — підберемо курс і рівень. Реєстрація не потрібна.</p>
+          </div>
+          <form class="card stack" id="consultation-form" action="index.html" method="post" aria-label="Заявка на безкоштовну консультацію">
+            <div class="form-grid">
+              <div class="field"><label class="field__label" for="c-name">Ім'я</label><input class="field__input" id="c-name" name="name" type="text" data-validate="required|name" autocomplete="given-name"></div>
+              <div class="field"><label class="field__label" for="c-phone">Телефон</label><input class="field__input" id="c-phone" name="phone" type="tel" data-validate="required|phone" autocomplete="tel" placeholder="+380 67 123 45 67"></div>
+            </div>
+            <div class="field"><label class="field__label" for="c-subject">Предмет</label><select class="field__input" id="c-subject" name="subject" data-validate="required"><option value="">Оберіть предмет</option><option>Математика (НМТ)</option><option>Українська мова (НМТ)</option><option>Англійська мова</option><option>Програмування</option><option>Історія України</option></select></div>
+            <div class="field"><label class="check t-body-s"><input type="checkbox" id="c-consent" name="consent" data-validate="required"> Погоджуюсь з обробкою персональних даних</label></div>
+            <p class="form-alert callout callout--error" role="alert" hidden></p>
+            <button class="btn btn--solid btn--lg" type="submit">Записатися на консультацію</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about" aria-labelledby="f-about">
+          <h2 class="site-footer__brand" id="f-about">ЗнанняПлюс</h2>
+          <p>Освітній центр: підготовка до НМТ, англійська мова та програмування для школярів. Онлайн і офлайн.</p>
+        </section>
+        <nav aria-labelledby="f-learn">
+          <h2 class="site-footer__title" id="f-learn">Навчання</h2>
+          <ul class="site-footer__list">
+            <li><a href="catalog.html?subject=math">Курси НМТ</a></li>
+            <li><a href="catalog.html?subject=english">Англійська</a></li>
+            <li><a href="catalog.html?subject=prog">Програмування</a></li>
+            <li><a href="tutors.html">Репетитори</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-center">
+          <h2 class="site-footer__title" id="f-center">Центр</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html#how">Про нас</a></li>
+            <li><a href="index.html#reviews">Відгуки</a></li>
+            <li><a href="index.html">Публічна оферта</a></li>
+            <li><a href="index.html">Політика конфіденційності</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="f-contacts">
+          <h2 class="site-footer__title" id="f-contacts">Контакти</h2>
+          <address class="site-footer__list">
+            <a href="tel:+380441234567">+380 44 123 45 67</a>
+            <a href="mailto:hello@znannyaplus.com.ua">hello@znannyaplus.com.ua</a>
+            <span>Київ, вул. Хрещатик, 1</span>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ЗнанняПлюс. Усі права захищено.</p>
+    </div>
+  </footer>
+</body>
+</html>

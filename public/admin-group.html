@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Адмін-панель — групи — ЗнанняПлюс</title>
+  <meta name="description" content="Адмін-панель: керування групами курсів і заявками на консультацію.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="js/utils.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/pages/admin.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="admin" data-section="">
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ЗнанняПлюс — на головну"><span class="logo__mark" aria-hidden="true">З+</span>ЗнанняПлюс</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span><span class="visually-hidden">Відкрити меню</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="catalog.html">Курси</a></li>
+          <li><a class="main-nav__link" href="tutors.html">Репетитори</a></li>
+          <li><a class="main-nav__link" href="index.html#how">Про центр</a></li>
+          <li><a class="main-nav__link" href="index.html#reviews">Відгуки</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ghost" href="cabinet.html">Мій кабінет</a>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="section section--tight section--surface">
+    <div class="container cabinet">
+        <aside class="card stack" aria-label="Меню кабінету">
+          <div class="side-menu__user"><span class="avatar" aria-hidden="true" data-me="initials">АД</span><div><p class="t-medium" data-me="name">Адміністратор</p><p class="t-caption t-muted" data-me="role">Адмін-панель</p></div></div>
+          <nav aria-label="Розділи кабінету">
+            <ul class="side-menu__list">
+            <li><a class="side-menu__link" href="admin-group.html" aria-current="page">Групи</a></li>
+            <li><a class="side-menu__link" href="admin-group.html#group-form">Нова група</a></li>
+            <li><a class="side-menu__link" href="admin-group.html#consultations">Заявки</a></li>
+            <li><a class="side-menu__link" href="index.html" id="logout">Вийти</a></li>
+            </ul>
+          </nav>
+        </aside>
+      <div class="stack">
+      <nav class="breadcrumbs" aria-label="Хлібні крихти">
+        <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item"><a href="admin-group.html">Адмін-панель</a></li>
+        <li class="breadcrumbs__item" aria-current="page">Групи</li>
+        </ol>
+      </nav>
+        <h1>Групи курсів</h1>
+        <section class="card stack" aria-labelledby="groups-count">
+          <div class="row" style="justify-content: space-between; flex-wrap: wrap">
+            <h2 class="t-h3" id="groups-count">Групи курсів</h2>
+            <div class="field" style="min-width: 240px"><label class="field__label" for="groups-filter">Фільтр за курсом</label><select class="field__input" id="groups-filter"><option value="">Усі курси</option></select></div>
+          </div>
+          <div class="table-wrap" id="groups-title">
+            <table class="table">
+              <caption class="visually-hidden">Групи курсів, включно з чернетками</caption>
+              <thead><tr><th scope="col">Група</th><th scope="col">Курс</th><th scope="col">Викладач</th><th scope="col">Розклад</th><th scope="col">Місця</th><th scope="col">Статус</th><th scope="col">Дії</th></tr></thead>
+              <tbody id="groups-body"><tr><td colspan="7">Завантаження…</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <form class="card stack" id="group-form" action="admin-group.html" aria-labelledby="params" novalidate>
+          <h2 class="t-h3" id="params">Нова група</h2>
+          <div class="form-grid">
+            <div class="field"><label class="field__label" for="g-course">Курс</label><select class="field__input" id="g-course" name="course" data-validate="required"><option value="">Оберіть курс</option></select></div>
+            <div class="field"><label class="field__label" for="g-tutor">Викладач</label><select class="field__input" id="g-tutor" name="tutor" data-validate="required"><option value="">Оберіть викладача</option></select></div>
+            <div class="field"><label class="field__label" for="g-start">Дата старту</label><input class="field__input" id="g-start" name="start" type="date" data-validate="required|future"></div>
+            <div class="field"><label class="field__label" for="g-duration">Тривалість заняття</label><select class="field__input" id="g-duration" name="duration"><option value="60">60 хв</option><option value="90" selected>90 хв</option><option value="180">180 хв</option></select></div>
+          </div>
+          <fieldset class="field" style="border: 0; margin: 0; padding: 0">
+            <legend class="field__label" style="margin-bottom: 6px">Дні занять</legend>
+            <div class="chips"><label class="chip"><input type="checkbox" name="days" value="Пн" id="g-day-0" data-validate>Пн</label><label class="chip"><input type="checkbox" name="days" value="Вт">Вт</label><label class="chip"><input type="checkbox" name="days" value="Ср">Ср</label><label class="chip"><input type="checkbox" name="days" value="Чт">Чт</label><label class="chip"><input type="checkbox" name="days" value="Пт">Пт</label><label class="chip"><input type="checkbox" name="days" value="Сб">Сб</label></div>
+          </fieldset>
+          <div class="form-grid">
+            <div class="field"><label class="field__label" for="g-time">Час початку</label><input class="field__input" id="g-time" name="time" type="time" data-validate="required|timeRange:08:00-20:00" step="900"></div>
+            <div class="field"><label class="field__label" for="g-max">Максимум місць</label><input class="field__input" id="g-max" name="max" type="text" data-validate="required|integer|min:1|max:30" inputmode="numeric" placeholder="10"></div>
+          </div>
+          <p class="t-caption t-muted">Ціна групи дорівнює ціні курсу. Сервер повторно перевіряє всі поля та перетин розкладу викладача.</p>
+          <p class="form-alert callout callout--error" role="alert" hidden></p>
+          <div class="row" style="justify-content: flex-end; flex-wrap: wrap">
+            <button class="btn btn--ghost btn--lg" type="reset">Очистити</button>
+            <button class="btn btn--outline btn--lg" type="submit" name="action" value="draft">Зберегти чернетку</button>
+            <button class="btn btn--solid btn--lg" type="submit" name="action" value="publish">Опублікувати</button>
+          </div>
+        </form>
+        <section class="card stack" id="consultations" aria-labelledby="consult-count">
+          <div class="row" style="justify-content: space-between; flex-wrap: wrap">
+            <h2 class="t-h3" id="consult-count">Заявки на консультацію</h2>
+            <div class="field" style="min-width: 200px"><label class="field__label" for="consult-filter">Статус</label><select class="field__input" id="consult-filter"><option value="">Усі</option><option value="new">Нові</option><option value="done">Опрацьовані</option></select></div>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <caption class="visually-hidden">Заявки на безкоштовну консультацію з головної сторінки</caption>
+              <thead><tr><th scope="col">Дата</th><th scope="col">Ім'я</th><th scope="col">Телефон</th><th scope="col">Предмет</th><th scope="col">Статус і дії</th></tr></thead>
+              <tbody id="consult-body"><tr><td colspan="5">Завантаження…</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <dialog class="modal" id="confirm-modal" aria-labelledby="confirm-modal-title">
+    <div class="stack">
+      <div class="modal__head">
+        <h2 class="t-h2" id="confirm-modal-title">Підтвердьте видалення</h2>
+        <button class="modal__close" type="button" data-modal-close aria-label="Закрити вікно">✕</button>
+      </div>
+      <p class="t-body-s" id="confirm-text">—</p>
+      <form class="row" id="confirm-form" action="admin-group.html" style="justify-content: flex-end">
+        <button class="btn btn--ghost btn--lg" type="button" data-modal-close>Скасувати</button>
+        <button class="btn btn--solid btn--lg" type="submit">Видалити</button>
+      </form>
+    </div>
+  </dialog>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about" aria-labelledby="f-about">
+          <h2 class="site-footer__brand" id="f-about">ЗнанняПлюс</h2>
+          <p>Освітній центр: підготовка до НМТ, англійська мова та програмування для школярів. Онлайн і офлайн.</p>
+        </section>
+        <nav aria-labelledby="f-learn">
+          <h2 class="site-footer__title" id="f-learn">Навчання</h2>
+          <ul class="site-footer__list">
+            <li><a href="catalog.html?subject=math">Курси НМТ</a></li>
+            <li><a href="catalog.html?subject=english">Англійська</a></li>
+            <li><a href="catalog.html?subject=prog">Програмування</a></li>
+            <li><a href="tutors.html">Репетитори</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-center">
+          <h2 class="site-footer__title" id="f-center">Центр</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html#how">Про нас</a></li>
+            <li><a href="index.html#reviews">Відгуки</a></li>
+            <li><a href="index.html">Публічна оферта</a></li>
+            <li><a href="index.html">Політика конфіденційності</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="f-contacts">
+          <h2 class="site-footer__title" id="f-contacts">Контакти</h2>
+          <address class="site-footer__list">
+            <a href="tel:+380441234567">+380 44 123 45 67</a>
+            <a href="mailto:hello@znannyaplus.com.ua">hello@znannyaplus.com.ua</a>
+            <span>Київ, вул. Хрещатик, 1</span>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ЗнанняПлюс. Усі права захищено.</p>
+    </div>
+  </footer>
+</body>
+</html>

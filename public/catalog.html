@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Каталог курсів — ЗнанняПлюс</title>
+  <meta name="description" content="Каталог курсів ЗнанняПлюс з фільтрами за предметом, форматом, рівнем, віком і ціною.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="js/utils.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/pages/catalog.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="catalog" data-section="catalog.html">
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ЗнанняПлюс — на головну"><span class="logo__mark" aria-hidden="true">З+</span>ЗнанняПлюс</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span><span class="visually-hidden">Відкрити меню</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="catalog.html">Курси</a></li>
+          <li><a class="main-nav__link" href="tutors.html">Репетитори</a></li>
+          <li><a class="main-nav__link" href="index.html#how">Про центр</a></li>
+          <li><a class="main-nav__link" href="index.html#reviews">Відгуки</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions" data-guest>
+        <a class="btn btn--ghost" href="login.html">Увійти</a>
+        <a class="btn btn--solid" href="login.html#register">Реєстрація</a>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="section section--tight">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Хлібні крихти">
+        <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item"><a href="index.html">Головна</a></li>
+        <li class="breadcrumbs__item" aria-current="page">Курси</li>
+        </ol>
+      </nav>
+      <h1 class="page-title">Каталог курсів</h1>
+      <div class="layout-sidebar">
+        <aside aria-label="Фільтри">
+          <button class="btn btn--outline btn--lg filters-button" type="button" aria-expanded="false" aria-controls="filters">Фільтри</button>
+          <form class="filters" id="filters" action="catalog.html">
+            <h2 class="t-h3">Фільтри</h2>
+            <div class="field"><label class="field__label" for="f-q">Пошук</label><input class="field__input" id="f-q" name="q" type="search" placeholder="Назва, предмет, викладач"></div>
+            <fieldset>
+              <legend>Предмет</legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="subject" value="math">Математика</label>
+                <label class="chip"><input type="checkbox" name="subject" value="english">Англійська</label>
+                <label class="chip"><input type="checkbox" name="subject" value="ukr">Українська мова</label>
+                <label class="chip"><input type="checkbox" name="subject" value="prog">Програмування</label>
+                <label class="chip"><input type="checkbox" name="subject" value="history">Історія</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Формат</legend>
+              <div class="segmented">
+                <label><input type="radio" name="format" value="all" checked>Усі</label>
+                <label><input type="radio" name="format" value="online">Онлайн</label>
+                <label><input type="radio" name="format" value="offline">Офлайн</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Рівень</legend>
+              <label class="check"><input type="checkbox" name="level" value="basic">Базовий</label>
+              <label class="check"><input type="checkbox" name="level" value="middle">Середній</label>
+              <label class="check"><input type="checkbox" name="level" value="advanced">Поглиблений</label>
+            </fieldset>
+            <fieldset>
+              <legend>Вік учня</legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="age" value="14-15">14–15</label>
+                <label class="chip"><input type="checkbox" name="age" value="16-17">16–17</label>
+                <label class="chip"><input type="checkbox" name="age" value="18+">18+</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Ціна, грн/міс</legend>
+              <div class="price-range">
+                <div class="field"><label class="field__label" for="p-from">Від</label><input class="field__input" id="p-from" name="from" type="number" min="0" step="100" placeholder="0"></div>
+                <div class="field"><label class="field__label" for="p-to">До</label><input class="field__input" id="p-to" name="to" type="number" min="0" step="100" placeholder="5000"></div>
+              </div>
+            </fieldset>
+            <button class="btn btn--solid" type="submit">Показати курси</button>
+            <button class="btn btn--outline" type="reset">Скинути фільтри</button>
+          </form>
+        </aside>
+        <section aria-labelledby="results-count">
+          <div class="results-bar">
+            <h2 class="t-body-s t-muted" id="results-count" aria-live="polite">Знайдено курсів: 0</h2>
+            <label class="visually-hidden" for="sort">Сортування</label>
+            <select class="select" id="sort" name="sort">
+              <option value="popular">Сортування: популярні</option>
+              <option value="price-asc">Спочатку дешевші</option>
+              <option value="price-desc">Спочатку дорожчі</option>
+            </select>
+          </div>
+          <div class="card-grid" id="course-list"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <p class="t-h2" aria-hidden="true">?</p>
+            <h3>Нічого не знайдено</h3>
+            <p class="t-muted">Спробуйте змінити або скинути фільтри</p>
+            <button class="btn btn--outline" type="button" id="empty-reset">Скинути фільтри</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about" aria-labelledby="f-about">
+          <h2 class="site-footer__brand" id="f-about">ЗнанняПлюс</h2>
+          <p>Освітній центр: підготовка до НМТ, англійська мова та програмування для школярів. Онлайн і офлайн.</p>
+        </section>
+        <nav aria-labelledby="f-learn">
+          <h2 class="site-footer__title" id="f-learn">Навчання</h2>
+          <ul class="site-footer__list">
+            <li><a href="catalog.html?subject=math">Курси НМТ</a></li>
+            <li><a href="catalog.html?subject=english">Англійська</a></li>
+            <li><a href="catalog.html?subject=prog">Програмування</a></li>
+            <li><a href="tutors.html">Репетитори</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-center">
+          <h2 class="site-footer__title" id="f-center">Центр</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html#how">Про нас</a></li>
+            <li><a href="index.html#reviews">Відгуки</a></li>
+            <li><a href="index.html">Публічна оферта</a></li>
+            <li><a href="index.html">Політика конфіденційності</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="f-contacts">
+          <h2 class="site-footer__title" id="f-contacts">Контакти</h2>
+          <address class="site-footer__list">
+            <a href="tel:+380441234567">+380 44 123 45 67</a>
+            <a href="mailto:hello@znannyaplus.com.ua">hello@znannyaplus.com.ua</a>
+            <span>Київ, вул. Хрещатик, 1</span>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ЗнанняПлюс. Усі права захищено.</p>
+    </div>
+  </footer>
+</body>
+</html>

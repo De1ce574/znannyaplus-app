@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Олена Коваль — репетитор з математики — ЗнанняПлюс</title>
+  <meta name="description" content="Профіль репетитора Олени Коваль: освіта, досвід, рейтинг 4,9 і відгуки учнів.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="js/utils.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="tutor" data-section="tutors.html">
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ЗнанняПлюс — на головну"><span class="logo__mark" aria-hidden="true">З+</span>ЗнанняПлюс</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span><span class="visually-hidden">Відкрити меню</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Головне меню">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="catalog.html">Курси</a></li>
+          <li><a class="main-nav__link" href="tutors.html">Репетитори</a></li>
+          <li><a class="main-nav__link" href="index.html#how">Про центр</a></li>
+          <li><a class="main-nav__link" href="index.html#reviews">Відгуки</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions" data-guest>
+        <a class="btn btn--ghost" href="login.html">Увійти</a>
+        <a class="btn btn--solid" href="login.html#register">Реєстрація</a>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="section section--tight">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Хлібні крихти">
+        <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item"><a href="index.html">Головна</a></li>
+        <li class="breadcrumbs__item"><a href="tutors.html">Репетитори</a></li>
+        <li class="breadcrumbs__item" aria-current="page">Олена Коваль</li>
+        </ol>
+      </nav>
+      <div class="layout-sidebar layout-sidebar--wide" style="margin-top: var(--space-5)">
+        <aside class="card card--shadow profile-card sticky" aria-label="Коротко про репетитора">
+          <span class="avatar avatar--l" aria-hidden="true">ОК</span>
+          <h1 class="t-h2">Олена Коваль</h1>
+          <p class="t-body-s t-muted">Математика · алгебра · геометрія</p>
+          <p class="rating">★ 4,9 · 32 відгуки</p>
+          <div class="row" style="justify-content: center"><span class="badge badge--indigo">Онлайн</span><span class="badge badge--gray">Офлайн</span><span class="badge badge--green">Перевірено центром</span></div>
+          <p class="t-h3">від 450 грн / 60 хв</p>
+          <a class="btn btn--solid btn--lg btn--block" href="booking.html">Записатися на заняття</a>
+          <a class="btn btn--outline btn--lg btn--block" href="index.html#consultation">Поставити питання</a>
+        </aside>
+        <div class="stack stack--lg">
+          <section class="stack" aria-labelledby="about">
+            <h2 class="t-h3" id="about">Про мене</h2>
+            <p>Готую до НМТ з математики 8 років. Мої учні в середньому отримують 170+ балів. Працюю з учнями 9–11 класів індивідуально та в групах до 10 осіб.</p>
+          </section>
+          <section class="stack" aria-labelledby="edu">
+            <h2 class="t-h3" id="edu">Освіта</h2>
+            <ul class="bullets">
+              <li>КНУ ім. Тараса Шевченка, механіко-математичний факультет, магістр (2014)</li>
+              <li>Сертифікований екзаменатор НМТ (УЦОЯО), 2022</li>
+            </ul>
+          </section>
+          <section class="stack" aria-labelledby="exp">
+            <h2 class="t-h3" id="exp">Досвід</h2>
+            <ul class="bullets">
+              <li>2018 – тепер: викладачка «ЗнанняПлюс»</li>
+              <li>2014 – 2018: вчителька математики, ліцей № 145, Київ</li>
+            </ul>
+          </section>
+          <section class="stack" aria-labelledby="rev">
+            <div class="section__head" style="margin: 0"><h2 class="t-h3" id="rev">Відгуки (32)</h2><p class="t-caption t-muted">Лише схвалені відгуки, від найновіших</p></div>
+            <div class="card-grid">
+          <article class="review-card">
+            <div class="review-card__author">
+              <span class="avatar avatar--s" aria-hidden="true">МС</span>
+              <div>
+                <h3 class="t-body-s t-medium">Марія С.</h3>
+                <p class="t-caption t-muted">мама учня 11 класу · жовтень 2026</p>
+              </div>
+            </div>
+            <p class="rating"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Оцінка 5 з 5</span></p>
+            <blockquote><p>Олена Вікторівна пояснює складні теми просто. За три місяці син підняв пробний НМТ зі 140 до 172 балів.</p></blockquote>
+            <span class="badge badge--green">Відвідав(ла) заняття</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card__author">
+              <span class="avatar avatar--s" aria-hidden="true">АВ</span>
+              <div>
+                <h3 class="t-body-s t-medium">Артем В.</h3>
+                <p class="t-caption t-muted">учень 11 класу · вересень 2026</p>
+              </div>
+            </div>
+            <p class="rating"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Оцінка 5 з 5</span></p>
+            <blockquote><p>Дуже структуровано: після кожної теми — міні-тест і розбір помилок.</p></blockquote>
+            <span class="badge badge--green">Відвідав(ла) заняття</span>
+          </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about" aria-labelledby="f-about">
+          <h2 class="site-footer__brand" id="f-about">ЗнанняПлюс</h2>
+          <p>Освітній центр: підготовка до НМТ, англійська мова та програмування для школярів. Онлайн і офлайн.</p>
+        </section>
+        <nav aria-labelledby="f-learn">
+          <h2 class="site-footer__title" id="f-learn">Навчання</h2>
+          <ul class="site-footer__list">
+            <li><a href="catalog.html?subject=math">Курси НМТ</a></li>
+            <li><a href="catalog.html?subject=english">Англійська</a></li>
+            <li><a href="catalog.html?subject=prog">Програмування</a></li>
+            <li><a href="tutors.html">Репетитори</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-center">
+          <h2 class="site-footer__title" id="f-center">Центр</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html#how">Про нас</a></li>
+            <li><a href="index.html#reviews">Відгуки</a></li>
+            <li><a href="index.html">Публічна оферта</a></li>
+            <li><a href="index.html">Політика конфіденційності</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="f-contacts">
+          <h2 class="site-footer__title" id="f-contacts">Контакти</h2>
+          <address class="site-footer__list">
+            <a href="tel:+380441234567">+380 44 123 45 67</a>
+            <a href="mailto:hello@znannyaplus.com.ua">hello@znannyaplus.com.ua</a>
+            <span>Київ, вул. Хрещатик, 1</span>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ЗнанняПлюс. Усі права захищено.</p>
+    </div>
+  </footer>
+</body>
+</html>
